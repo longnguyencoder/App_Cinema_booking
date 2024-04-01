@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:id="@+id/bnt1"
+        android:title=""
+        android:icon="@drawable/btn_1" />
+
+    <item android:id="@+id/bnt2"
+        android:title=""
+        android:icon="@drawable/btn_2"/>
+
+    <item android:id="@+id/bnt3"
+        android:title=""
+        android:icon="@drawable/btn_3"/>
+
+    <item android:id="@+id/bnt4"
+        android:title=""
+        android:icon="@drawable/btn_4"/>
+</menu>

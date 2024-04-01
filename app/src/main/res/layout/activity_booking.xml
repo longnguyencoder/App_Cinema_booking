@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_backroun"
+    tools:context=".Activity.BookingActivity"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_color_backroud"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="24dp"
+                android:textSize="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What would you like to watch?" />
+
+
+
+            <TextView
+                android:id="@+id/NewsMovie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="News Movies"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginEnd="16dp"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="#FF9800"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="174dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <RadioButton
+                                android:id="@+id/rd_p2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Phòng 2"
+                                android:textColor="@color/white">
+
+                            </RadioButton>
+
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <RadioButton
+                                android:id="@+id/rd_p3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Phòng 3"
+                                android:textColor="@color/white">
+
+                            </RadioButton>
+
+                        </RadioGroup>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/upcommingMovies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upcomming Movies"
+                android:textColor="#FF9800"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="-24dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="384dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="21dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/View2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:minHeight="200dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <ProgressBar
+                    android:id="@+id/loading1"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/View2"
+                    tools:ignore="MissingConstraints"
+                    tools:visibility="visible" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!--        android:background=""-->
+
+    <!--<androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp">
+
+        &lt;!&ndash;<com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:backgroundTint="#282f32">
+
+            &lt;!&ndash;<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.2"
+                    app:srcCompat="@drawable/btn_1"
+                    app:tint="@color/white"
+                    tools:ignore="UseAppTint"
+                    tools:layout_editor_absoluteX="21dp"
+                    tools:layout_editor_absoluteY="220dp" />
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.2"
+                    app:srcCompat="@drawable/btn_2"
+                    app:tint="@color/white"
+                    tools:ignore="UseAppTint"
+                    tools:layout_editor_absoluteX="102dp"
+                    tools:layout_editor_absoluteY="220dp" />
+
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/btn_3"
+                    app:tint="@color/white"
+                    tools:ignore="UseAppTint"
+                    tools:layout_editor_absoluteX="178dp"
+                    tools:layout_editor_absoluteY="215dp" />
+
+                <ImageView
+                    android:id="@+id/imageView13"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.2"
+                    app:srcCompat="@drawable/btn_3"
+                    app:tint="@color/white"
+                    tools:ignore="UseAppTint"
+                    tools:layout_editor_absoluteX="254dp"
+                    tools:layout_editor_absoluteY="220dp" />
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="0.2"
+                    app:srcCompat="@drawable/btn_4"
+                    app:tint="@color/white"
+                    tools:ignore="UseAppTint"
+                    tools:layout_editor_absoluteX="335dp"
+                    tools:layout_editor_absoluteY="220dp" />
+            </LinearLayout>&ndash;&gt;
+
+
+        </com.google.android.material.bottomappbar.BottomAppBar>&ndash;&gt;
+
+
+&lt;!&ndash;<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>&ndash;&gt;
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>
