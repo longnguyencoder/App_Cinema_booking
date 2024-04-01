@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -33,7 +33,7 @@
                 android:textSize="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="What would you like to watch?" />
+                android:text="Confirm Ticket Booking" />
 
 
 
@@ -41,7 +41,7 @@
                 android:id="@+id/NewsMovie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="News Movies"
+                android:text="Choose Room"
                 android:layout_marginTop="24dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="12dp"
@@ -52,75 +52,180 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="174dp"
+                android:layout_height="50dp"
 
                 >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints">
 
-                    <LinearLayout
+                    <HorizontalScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="64dp"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                        </TextView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="64dp"
-                        android:orientation="horizontal">
-
-                        <RadioGroup
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" >
                             <RadioButton
-                                android:id="@+id/rd_p2"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:id="@+id/rd_room1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Phòng 1"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
+
+                            <RadioButton
+                                android:id="@+id/rd_room2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:text="Phòng 2"
-                                android:textColor="@color/white">
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
 
-                            </RadioButton>
-
-                        </RadioGroup>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="64dp"
-                        android:orientation="horizontal">
-
-                        <RadioGroup
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
                             <RadioButton
-                                android:id="@+id/rd_p3"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:id="@+id/rd_room3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:text="Phòng 3"
-                                android:textColor="@color/white">
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
 
-                            </RadioButton>
+                            <RadioButton
+                                android:id="@+id/rd_room4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Phòng 4"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
 
-                        </RadioGroup>
-                    </LinearLayout>
+                            <RadioButton
+                                android:id="@+id/rd_room5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Phòng 5"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
+
+                            <RadioButton
+                                android:id="@+id/rd_room6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Phòng 6"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
                 </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Choose time"
+                android:textColor="#FF9800"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginEnd="16dp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="-24dp">
+
+            </TextView>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="MissingConstraints">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rd_time900"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="9:00"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
+
+                            <RadioButton
+                                android:id="@+id/rd_time1100"
+                                android:text="11:00"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                 />
+
+                            <RadioButton
+                                android:id="@+id/rd_time1300"
+                                android:text="13:00"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                 />
+
+                            <RadioButton
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/rd_time1500"
+                                android:text="15:00"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                            <RadioButton
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/rd_time1700"
+                                android:text="17:00"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                            <RadioButton
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/rd_time2000"
+                                android:text="20:00"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/upcommingMovies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Upcomming Movies"
+                android:text="Choose a sitting position"
                 android:textColor="#FF9800"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -129,39 +234,230 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="384dp"
+                android:layout_height="293dp"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="21dp">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/View2"
+                <GridLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clipToPadding="false"
-                    android:minHeight="200dp"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <ProgressBar
-                    android:id="@+id/loading1"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/View2"
-                    tools:ignore="MissingConstraints"
-                    tools:visibility="visible" />
+                    android:columnCount="6"
+                    android:columnOrderPreserved="false"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:rowCount="3"
+                    android:rowOrderPreserved="false"
+                    tools:ignore="MissingConstraints">
+
+                    <!-- Seat 1 -->
+                    <Button
+                        android:id="@+id/seat1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="1"
+                        />
+
+                    <!-- Seat 2 -->
+                    <Button
+                        android:id="@+id/seat2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="2"
+                        />
+
+                    <!-- Seat 3 -->
+                    <Button
+                        android:id="@+id/seat3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="3"
+                        />
+
+                    <!-- Seat 4 -->
+                    <Button
+                        android:id="@+id/seat4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="4"
+                        />
+
+                    <!-- Seat 5 -->
+                    <Button
+                        android:id="@+id/seat5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="5"/>
+
+                    <!-- Seat 6 -->
+                    <Button
+                        android:id="@+id/seat6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="6"
+                        />
+
+                    <!-- Seat 7 -->
+                    <Button
+                        android:id="@+id/seat7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="7"
+                        />
+
+                    <!-- Seat 8 -->
+                    <Button
+                        android:id="@+id/seat8"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="8"
+                        />
+
+                    <!-- Seat 9 -->
+                    <Button
+                        android:id="@+id/seat9"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="9"
+                        />
+
+                    <!-- Seat 10 -->
+                    <Button
+                        android:id="@+id/seat10"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="10"
+                        />
+
+                    <!-- Seat 11 -->
+                    <Button
+                        android:id="@+id/seat11"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="11"
+                        />
+
+                    <!-- Seat 12 -->
+                    <Button
+                        android:id="@+id/seat12"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="12"
+                        />
+
+                    <!-- Seat 13 -->
+                    <Button
+                        android:id="@+id/seat13"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="13"
+                        />
+
+                    <!-- Seat 14 -->
+                    <Button
+                        android:id="@+id/seat14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="14"
+                        />
+
+                    <!-- Seat 15 -->
+                    <Button
+                        android:id="@+id/seat15"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="15"
+                        />
+
+                    <!-- Seat 16 -->
+                    <Button
+                        android:id="@+id/seat16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="16"
+                        />
+
+                    <!-- Seat 17 -->
+                    <Button
+                        android:id="@+id/seat17"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="17"
+                        />
+
+                    <!-- Seat 18 -->
+                    <Button
+                        android:id="@+id/seat18"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="8dp"
+                        android:text="18"
+                       />
+
+                </GridLayout>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="BOOK"
+                android:textStyle="bold"
+                android:textSize="30dp">
+
+            </Button>
         </LinearLayout>
     </ScrollView>
 
@@ -255,4 +551,4 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"/>&ndash;&gt;
     </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -2,6 +2,7 @@ package com.example.moviesappbookingusingapi.Activity;
 
 import static android.view.View.GONE;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,7 +41,7 @@ public class DetailActivity extends AppCompatActivity {
     private int idFilm;
 
     private ShapeableImageView pic1;
-    private ImageView pic2,backImg;
+    private ImageView pic2,backImg,bookingImg;
     private RecyclerView.Adapter adapterImgList;
     private  RecyclerView recyclerView;
     @Override
@@ -53,6 +54,7 @@ public class DetailActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         idFilm = getIntent().getIntExtra("id",0);
         initView();
 
@@ -113,6 +115,7 @@ public class DetailActivity extends AppCompatActivity {
         MoviesummeryInfor = findViewById(R.id.MoviesummeryInfor);
         MovieActorInfor = findViewById(R.id.MovieActorInfor);
         backImg = findViewById(R.id.img_back);
+        bookingImg = findViewById(R.id.img_booktiket);
         recyclerView = findViewById(R.id.imageRecyclerViewdetail);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
@@ -122,6 +125,13 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        bookingImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailActivity.this,BookingActivity.class);
+                startActivity(intent);
             }
         });
     }

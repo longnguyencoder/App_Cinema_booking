@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <!-- Màu nền khi được nhấn -->
+            <solid android:color="#FF0000" /> <!-- Đổi màu tùy ý -->
+            <!-- Đường viền nếu cần -->
+            <stroke android:color="#000000" android:width="1dp" />
+        </shape>
+    </item>
+    <!-- Trạng thái mặc định -->
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Màu nền mặc định -->
+            <solid android:color="#00FF00" /> <!-- Đổi màu tùy ý -->
+            <!-- Đường viền nếu cần -->
+            <stroke android:color="#000000" android:width="1dp" />
+        </shape>
+    </item>
+</selector>
