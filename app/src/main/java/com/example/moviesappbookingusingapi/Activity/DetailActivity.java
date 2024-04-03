@@ -63,8 +63,9 @@ public class DetailActivity extends AppCompatActivity {
 
     private void sendRequest() {
         requestQueue = Volley.newRequestQueue(this);
+
         progressBar.setVisibility(View.VISIBLE);
-        scrollView.setVisibility(GONE);
+        scrollView.setVisibility(View.GONE);
         stringRequest= new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/movies/"+idFilm, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {

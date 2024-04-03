@@ -29,13 +29,6 @@ public class BookingActivity extends AppCompatActivity {
             return insets;
         });
 
-        rom1 = findViewById(R.id.rd_room1);
-        rom2 = findViewById(R.id.rd_room2);
-        rom3 = findViewById(R.id.rd_room3);
-        rom4 = findViewById(R.id.rd_room4);
-        rom5 = findViewById(R.id.rd_room5);
-        rom6 = findViewById(R.id.rd_room6);
-
         time900 = findViewById(R.id.rd_time900);
         time1100 = findViewById(R.id.rd_time1100);
         time1300 = findViewById(R.id.rd_time1300);
@@ -43,22 +36,6 @@ public class BookingActivity extends AppCompatActivity {
         time1700 = findViewById(R.id.rd_time1700);
         time2000 = findViewById(R.id.rd_time2000);
 
-        btn_seat1 =findViewById(R.id.seat1);
-        btn_seat2 =findViewById(R.id.seat2);
-        btn_seat3 =findViewById(R.id.seat3);
-        btn_seat4 =findViewById(R.id.seat4);
-        btn_seat5 =findViewById(R.id.seat5);
-        btn_seat6 =findViewById(R.id.seat6);
-        btn_seat7 =findViewById(R.id.seat7);
-        btn_seat8 =findViewById(R.id.seat8);
-        btn_seat9 =findViewById(R.id.seat9);
-        btn_seat10 =findViewById(R.id.seat10);
-        btn_seat11 =findViewById(R.id.seat11);
-        btn_seat12 =findViewById(R.id.seat12);
-        btn_seat13 =findViewById(R.id.seat13);
-        btn_seat14 =findViewById(R.id.seat14);
-        btn_seat15 =findViewById(R.id.seat15);
-        btn_seat16 =findViewById(R.id.seat16);
         EvendRoom();
         EvendTime();
         EvendSeat();
@@ -68,7 +45,7 @@ public class BookingActivity extends AppCompatActivity {
         btn_seat1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedColor = Color.YELLOW;
+
             }
         });
         btn_seat2.setOnClickListener(new View.OnClickListener() {
