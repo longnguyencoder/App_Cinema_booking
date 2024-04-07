@@ -25,12 +25,11 @@ import com.example.moviesappbookingusingapi.R;
 import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
-        private RecyclerView.Adapter adapterNewMovies,adaterUpcomming;
-        private  RecyclerView recyclerViewNewMovies,recyclerViewUpcomming;
-
-        private RequestQueue requestQueue;
-        private  StringRequest stringRequest,stringRequest2;
-        private ProgressBar loading, loading2;
+    private RecyclerView.Adapter adapterNewMovies,adaterUpcomming;
+    private  RecyclerView recyclerViewNewMovies,recyclerViewUpcomming;
+    private RequestQueue requestQueue;
+    private  StringRequest stringRequest,stringRequest2;
+    private ProgressBar loading, loading2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 Log.i("uilover","sendRequest2: "+volleyError.toString());
-                    loading.setVisibility(View.GONE);
+                loading.setVisibility(View.GONE);
             }
         });
         requestQueue.add(stringRequest);

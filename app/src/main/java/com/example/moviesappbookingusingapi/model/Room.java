@@ -68,7 +68,7 @@ public class Room {
                         System.out.println("size---------- " + seats.size());
                         System.out.println(calculate(seats));
                         String result = Double.toString(calculate(seats));
-                        titleTextView.setText("Totaal: " + result);
+                        titleTextView.setText("Total: " + result);
 
                     }
 

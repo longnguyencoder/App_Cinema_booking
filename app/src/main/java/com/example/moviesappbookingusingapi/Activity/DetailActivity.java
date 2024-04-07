@@ -32,6 +32,9 @@ import com.example.moviesappbookingusingapi.R;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DetailActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private StringRequest stringRequest;
@@ -39,11 +42,12 @@ public class DetailActivity extends AppCompatActivity {
     private TextView titletxt,movieNametxt,MovieRateTxt,MovieTime,movieDate,Summery,MoviesummeryInfor,MovieActorInfor;
     private NestedScrollView scrollView;
     private int idFilm;
-
     private ShapeableImageView pic1;
     private ImageView pic2,backImg,bookingImg;
     private RecyclerView.Adapter adapterImgList;
     private  RecyclerView recyclerView;
+    FilmItem filmItemIntent, items;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,32 +70,34 @@ public class DetailActivity extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
         scrollView.setVisibility(View.GONE);
-        stringRequest= new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/movies/"+idFilm, new Response.Listener<String>() {
+        stringRequest= new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/movies/" + idFilm, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 Gson gson = new Gson();
                 progressBar.setVisibility(View.GONE);
                     scrollView.setVisibility(View.VISIBLE);
-                FilmItem item= gson.fromJson(s,FilmItem.class);
+
+                    items = gson.fromJson(s,FilmItem.class);
+
                 Glide.with(DetailActivity.this)
-                        .load(item.getPoster())
+                        .load(items.getPoster())
                         .into(pic1);
 
                 Glide.with(DetailActivity.this)
-                        .load(item.getPoster())
+                        .load(items.getPoster())
                         .into(pic2);
 
-
-                titletxt.setText(item.getTitle());
-                MovieRateTxt.setText(item.getRated());
-                MovieTime.setText(item.getRuntime());
-                movieDate.setText(item.getReleased());
-                MoviesummeryInfor.setText(item.getPlot());
-                MovieActorInfor.setText(item.getActors());
-                if(item.getImages()!=null){
-                    adapterImgList= new ImageListAdapter(item.getImages());
+                titletxt.setText(items.getTitle());
+                MovieRateTxt.setText(items.getRated());
+                MovieTime.setText(items.getRuntime());
+                movieDate.setText(items.getReleased());
+                MoviesummeryInfor.setText(items.getPlot());
+                MovieActorInfor.setText(items.getActors());
+                if(items.getImages()!=null){
+                    adapterImgList= new ImageListAdapter(items.getImages());
                     recyclerView.setAdapter(adapterImgList);
                 }
+                filmItemIntent = items;
             }
         }, new Response.ErrorListener() {
             @Override
@@ -101,6 +107,8 @@ public class DetailActivity extends AppCompatActivity {
                 Log.i("uilover","onErrorResponse"+volleyError.toString());
             }
         });
+
+
         requestQueue.add(stringRequest);
     }
 
@@ -132,6 +140,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailActivity.this,BookingActivity.class);
+                intent.putExtra("FilmIntent", filmItemIntent);
                 startActivity(intent);
             }
         });

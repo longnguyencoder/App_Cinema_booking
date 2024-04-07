@@ -4,10 +4,11 @@ package com.example.moviesappbookingusingapi.Domain;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class FilmItem extends ListFilm {
+public class FilmItem extends ListFilm implements Serializable{
 
     @SerializedName("id")
     @Expose

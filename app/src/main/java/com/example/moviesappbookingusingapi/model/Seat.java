@@ -28,7 +28,7 @@ public class Seat extends AppCompatButton {
     private int colNum;
     private boolean isSelected;
     private boolean isBooked = false;
-    private final double price = 10.00;
+    private final double price = 10000;
 
 
     private static final String TAG = "Seat";

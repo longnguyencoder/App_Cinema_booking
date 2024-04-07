@@ -59,14 +59,6 @@
                     android:maxLines="2"/>
 
                 <TextView
-                    android:id="@+id/genreConfirmation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Action"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <TextView
                     android:id="@+id/dateConfirmation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -156,15 +148,36 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="Confirm"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        android:textSize="26sp"
-        android:layout_margin="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/bg_book"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Back"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_book"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_book"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
 </LinearLayout>
