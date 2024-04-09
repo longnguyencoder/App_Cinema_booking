@@ -2,22 +2,14 @@ package com.example.moviesappbookingusingapi.model;
 
 
 import android.content.Context;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.Button;
 
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.moviesappbookingusingapi.R;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 
-/**
- * Created by Sammy on 3/28/18.
- */
 
 public class Seat extends AppCompatButton {
     private String ID; //hashcode //row col string //

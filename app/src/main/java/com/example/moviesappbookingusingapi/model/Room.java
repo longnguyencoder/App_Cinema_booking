@@ -9,9 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by Sammy on 4/2/18.
- */
+
 
 public class Room {
 
@@ -78,56 +76,7 @@ public class Room {
         }
     }
 
-   /* public Room(Context context, TableLayout layout, int ROW, int COL){
-        TableLayout tableLayout = layout;
-        //final TextView titleTextView = textView;
 
-        seats = new ArrayList<>();
-
-        for (int i = 0; i < ROW; i++){
-            TableRow tableRow = new TableRow(context);
-            tableRow.setLayoutParams(new TableLayout.LayoutParams(
-                    TableLayout.LayoutParams.MATCH_PARENT,
-                    TableLayout.LayoutParams.MATCH_PARENT, 1.0f
-            ));
-            tableLayout.addView(tableRow);
-            for (int j = 0; j < COL; j++){
-                final int FINAL_ROW = i;
-                final int FINAL_COL = j;
-
-                final Seat seat = new Seat(context, i, j);
-                seat.setStatus(false);
-
-               *//* if(bookedseats.contains(seat.getSeatID())){
-                    seat.setIsBooked();
-
-                    Log.d(TAG, "Room: ------------------------------- " + seat.getSeatID());
-                }*//*
-
-                seat.setBackground();
-                seat.setLayoutParams(new TableRow.LayoutParams(
-                        TableRow.LayoutParams.MATCH_PARENT,
-                        TableRow.LayoutParams.MATCH_PARENT, 1.0f
-                ));
-
-                seat.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        seatButtonClicked(seat, FINAL_ROW, FINAL_COL);
-                        addSeat(seat);
-
-                        System.out.println("size---------- " + seats.size());
-                        System.out.println(calculate(seats));
-                        String result = Double.toString(calculate(seats));
-                        //titleTextView.setText("Totaal: " + result);
-
-                    }
-
-                });
-                tableRow.addView(seat);
-            }
-        }
-    }*/
     public ArrayList<Seat> getSeats(){
         return seats;
     }

@@ -2,24 +2,15 @@ package com.example.moviesappbookingusingapi.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.moviesappbookingusingapi.Database.BookingDatabase;
 import com.example.moviesappbookingusingapi.Domain.FilmItem;
@@ -50,14 +41,9 @@ public class BookingActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         shows = new ArrayList<>();
-
-        //getIntent().getIntExtra("id", 0);
-
         intent = getIntent();
         filmItem = (FilmItem) intent.getSerializableExtra("FilmIntent");
-
         binding.titleFilm.setText(filmItem.getTitle());
-
         insertData();
         addEvents();
     }

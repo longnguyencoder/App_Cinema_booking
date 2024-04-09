@@ -3,49 +3,58 @@ package com.example.moviesappbookingusingapi.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.example.moviesappbookingusingapi.R;
+import com.example.moviesappbookingusingapi.Database.BookingDatabase;
+import com.example.moviesappbookingusingapi.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText edt_usname,edt_password;
-    Button btn_Login;
+    ActivityLoginBinding binding;
+    BookingDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        InnitView();
+        binding= ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        db= new BookingDatabase(this);
 
+        addEvents();
     }
 
-    private void InnitView() {
-        edt_usname= findViewById(R.id.edt_UserName);
-        edt_password= findViewById(R.id.edt_Password);
-        btn_Login= findViewById(R.id.btn_login);
-        btn_Login.setOnClickListener(new View.OnClickListener() {
+    private void addEvents() {
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edt_usname.getText().toString().isEmpty()|| edt_password.getText().toString().isEmpty()){
-                    Toast.makeText(LoginActivity.this, "please fill your user and password",Toast.LENGTH_SHORT).show();
-                }else if(edt_usname.getText().toString().equals("test")|| edt_password.getText().toString().equals("test")){
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
+                String email = binding.edtUserName.getText().toString();
+                String password = binding.edtPassword.getText().toString();
+                if (email.equals("") ||password.equals("")) {
+                    Toast.makeText(LoginActivity.this, "ALL fields are mandatory", Toast.LENGTH_SHORT).show();
+                }else{
+                        boolean   check_accuracy =db.checkEmailPassword(email,password);
+
+                        if (check_accuracy==true ){
+                            Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(LoginActivity.this, "Accuracy Fail", Toast.LENGTH_SHORT).show();
+                        }
                 }
+
+            }
+        });
+        binding.txtSigup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,SigUpActivity.class);
+                startActivity(intent);
             }
         });
     }
+
+
 }

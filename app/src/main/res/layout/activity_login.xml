@@ -67,9 +67,8 @@
 
                 android:textAlignment="center"
                 android:textColor="@color/white"
-
                 android:textColorHint="@color/white" />
-<!--quên mật khẩu-->
+
             <TextView
                 android:id="@+id/forgetpassword"
                 android:textColor="@color/white"
@@ -103,7 +102,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/forgetpassword3"
+                android:id="@+id/txt_sigup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Register now"

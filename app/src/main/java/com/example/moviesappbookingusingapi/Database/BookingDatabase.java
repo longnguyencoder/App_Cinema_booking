@@ -19,6 +19,8 @@ public class BookingDatabase extends SQLiteOpenHelper {
     private static final String TABLE_TICKET = "ticket";
     private static final String TABLE_SHOW = "show_film";
     private static final String TABLE_ROOM = "room";
+    private static final String TABLE_USER = "user";
+
 
     private SQLiteDatabase db = this.getWritableDatabase();
     public BookingDatabase(Context context){
@@ -30,6 +32,7 @@ public class BookingDatabase extends SQLiteOpenHelper {
         db.execSQL("create table " + TABLE_RESERVATION + " (reservation_id INTEGER PRIMARY KEY AUTOINCREMENT, seat_id VARCHAR(4), film_id INTEGER); ");
         db.execSQL("create table " + TABLE_SHOW + " (film_id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(256), time VARCHAR(5), room_id INTEGER);");
         db.execSQL("create table " + TABLE_ROOM + " (room_id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(256));");
+        db.execSQL("create table " + TABLE_USER + " (email VARCHAR(256) PRIMARY KEY , password VARCHAR(256));");
     }
 
     @Override
@@ -38,10 +41,40 @@ public class BookingDatabase extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERVATION + " (reservation_id INTEGER PRIMARY KEY AUTOINCREMENT, seat_id VARCHAR(4), film_id INTEGER); ");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SHOW + " (film_id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(256), time VARCHAR(5), room_id INTEGER);");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ROOM + " (room_id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(256));");
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER + "(email VARCHAR(256) PRIMARY KEY , password VARCHAR(256));");
         onCreate(db);
     }
 
+    public boolean inserDataUser(String email, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("email", email);
+        contentValues.put("password", password);
+        long result =db.insert("user", null, contentValues);
+        if (result == -1)
+            return false;
+        return true;
+    }
+    public  boolean checkMail(String email){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "SELECT * FROM user WHERE email = ?" ;
+        Cursor cursor = db.rawQuery(sql ,new String[]{email});
+        if (cursor.getCount()>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public boolean checkEmailPassword(String email, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sql = "SELECT * FROM user WHERE email = ? AND password = ? ;" ;
+        Cursor cursor = db.rawQuery(sql ,new String[]{email,password});
+        if (cursor.getCount()>0){
+            return true;
+        }else {
+            return false;
+        }
+    }
     public boolean insertDatatoReservation(int film_id, String seat_id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
