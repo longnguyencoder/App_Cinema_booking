@@ -44,7 +44,7 @@ public class DetailActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapterImgList;
     private  RecyclerView recyclerView;
     FilmItem filmItemIntent, items;
-
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +57,8 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         idFilm = getIntent().getIntExtra("id",0);
+        email = getIntent().getStringExtra("email");
+        Log.d("email_detail", email);
 
         initView();
 
@@ -139,6 +141,7 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DetailActivity.this,BookingActivity.class);
                 intent.putExtra("FilmIntent", filmItemIntent);
+                intent.putExtra("email", email);
                 startActivity(intent);
             }
         });

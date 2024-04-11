@@ -1,5 +1,6 @@
 package com.example.moviesappbookingusingapi.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private  StringRequest stringRequest,stringRequest2;
     private ProgressBar loading, loading2;
+    String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        email = getIntent().getStringExtra("email");
 
         initView();
         sendRequest();

@@ -34,6 +34,7 @@ public class BookingActivity extends AppCompatActivity {
     private static final String TAG = "SeatSelectionActivity";
     Intent intent;
     FilmItem filmItem;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,10 @@ public class BookingActivity extends AppCompatActivity {
         intent = getIntent();
         filmItem = (FilmItem) intent.getSerializableExtra("FilmIntent");
         binding.titleFilm.setText(filmItem.getTitle());
+        email = intent.getStringExtra("email");
+
+        Log.d("email_booking", email);
+
         insertData();
         addEvents();
     }
@@ -195,6 +200,7 @@ public class BookingActivity extends AppCompatActivity {
             iConfirm.putStringArrayListExtra("seatIdList", seatIds);
             iConfirm.putExtra("TotalPrice", Double.toString(room.calculate(seats)));
             iConfirm.putExtra("FilmId", filmId);
+            iConfirm.putExtra("email", email);
             startActivity(iConfirm);
         }
     }

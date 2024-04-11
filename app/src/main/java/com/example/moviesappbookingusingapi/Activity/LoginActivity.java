@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
     BookingDatabase db;
     ArrayList<User> users;
-    int user_Id;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,15 +45,13 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (check_accuracy==true ){
 
-                            //users = db.getUserId(email);
-                            //User_Id = users.get(0).getUser_id();
-
-                            Log.d("test", user_Id +"");
+                            users = db.getUserId(email);
+                            email = users.get(0).getEmail();
 
                             Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            intent.putExtra("email", email);
                             startActivity(intent);
-
 
                         }else {
                             Toast.makeText(LoginActivity.this, "Accuracy Fail", Toast.LENGTH_SHORT).show();
@@ -66,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,SigUpActivity.class);
-
                 startActivity(intent);
             }
         });

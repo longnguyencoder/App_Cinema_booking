@@ -5,11 +5,13 @@ public class Ticket {
     private String seatInfo;
     private String time;
     private String filmTitle;
+    private String email;
 
-    public Ticket(String seatInfo, String time, String filmTitle) {
+    public Ticket(String seatInfo, String time, String filmTitle, String email) {
         this.seatInfo = seatInfo;
         this.time = time;
         this.filmTitle = filmTitle;
+        this.email = email;
     }
 
     public int getTicketID() {

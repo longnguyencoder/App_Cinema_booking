@@ -29,7 +29,7 @@ public class BookingDatabase extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_TICKET + " (ticket_id INTEGER PRIMARY KEY AUTOINCREMENT, seat_info VARCHAR(512), time VARCHAR(5), title VARCHAR(256));");
+        db.execSQL("create table " + TABLE_TICKET + " (ticket_id INTEGER PRIMARY KEY AUTOINCREMENT, seat_info VARCHAR(512), time VARCHAR(5), title VARCHAR(256), email VARCHAR(256));");
         db.execSQL("create table " + TABLE_RESERVATION + " (reservation_id INTEGER PRIMARY KEY AUTOINCREMENT, seat_id VARCHAR(4), film_id INTEGER); ");
         db.execSQL("create table " + TABLE_SHOW + " (film_id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(256), time VARCHAR(5), room_id INTEGER);");
         db.execSQL("create table " + TABLE_ROOM + " (room_id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(256));");
@@ -38,7 +38,7 @@ public class BookingDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TICKET + " (ticket_id INTEGER PRIMARY KEY AUTOINCREMENT, seat_info VARCHAR(512), time VARCHAR(5), title VARCHAR(256));");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TICKET + " (ticket_id INTEGER PRIMARY KEY AUTOINCREMENT, seat_info VARCHAR(512), time VARCHAR(5), title VARCHAR(256), email VARCHAR(256));");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERVATION + " (reservation_id INTEGER PRIMARY KEY AUTOINCREMENT, seat_id VARCHAR(4), film_id INTEGER); ");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SHOW + " (film_id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(256), time VARCHAR(5), room_id INTEGER);");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ROOM + " (room_id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(256));");
@@ -81,7 +81,8 @@ public class BookingDatabase extends SQLiteOpenHelper {
         }
     }
     public ArrayList<User> getUserId(String email){
-        String sql = "SELECT * FROM show_film WHERE title LIKE '" + email + "';";
+        String sql = "SELECT * FROM user WHERE email LIKE '" + email + "';";
+
         ArrayList<User> users = new ArrayList<>();
 
         Cursor cursor = db.rawQuery(sql, null);
@@ -166,11 +167,12 @@ public class BookingDatabase extends SQLiteOpenHelper {
         return show;
     }
 
-    public boolean insertDataToTicket(String seat_info, String time, String title){
+    public boolean insertDataToTicket(String seat_info, String time, String title, String email){
         ContentValues contentValues = new ContentValues();
         contentValues.put("seat_info", seat_info);
         contentValues.put("time", time);
         contentValues.put("title", title);
+        contentValues.put("email", email);
 
         long res = db.insert(TABLE_TICKET, null, contentValues);
         if (res == -1)

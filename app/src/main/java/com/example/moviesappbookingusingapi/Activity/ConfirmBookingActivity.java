@@ -2,6 +2,7 @@ package com.example.moviesappbookingusingapi.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class ConfirmBookingActivity extends AppCompatActivity {
     BookingDatabase db;
     FilmItem filmItem;
     String allIds = "";
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,8 @@ public class ConfirmBookingActivity extends AppCompatActivity {
         filmId = getIntent().getIntExtra("FilmId", 0);
         seats = getIntent().getStringArrayListExtra("seatIdList");
         totalPrice = getIntent().getStringExtra("TotalPrice");
+        email = getIntent().getStringExtra("email");
+        Log.d("email", email);
         db = new BookingDatabase(this);
         countTicket = seats.size();
         setData();
@@ -68,12 +72,12 @@ public class ConfirmBookingActivity extends AppCompatActivity {
         binding.totalTicketConfirm.setText(countTicket + "");
         binding.totalPriceConfirm.setText(totalPrice);
 
-        Ticket ticket = new Ticket(allIds, show.getTime(), filmItem.getTitle());
+        Ticket ticket = new Ticket(allIds, show.getTime(), filmItem.getTitle(), email);
 
         binding.btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.insertDataToTicket(ticket.getSeatInfo(), ticket.getTime(), ticket.getFilmTitle());
+                db.insertDataToTicket(ticket.getSeatInfo(), ticket.getTime(), ticket.getFilmTitle(), email);
 
                 for (int i = 0; i < seats.size(); i++){
                     db.insertDatatoReservation(filmId, seats.get(i));
