@@ -62,12 +62,10 @@ public class Room {
                     public void onClick(View view) {
                         seatButtonClicked(seat, FINAL_ROW, FINAL_COL);
                         addSeat(seat);
-
                         System.out.println("size---------- " + seats.size());
                         System.out.println(calculate(seats));
                         String result = Double.toString(calculate(seats));
                         titleTextView.setText("Total: " + result);
-
                     }
 
                 });

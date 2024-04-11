@@ -5,17 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.moviesappbookingusingapi.Database.BookingDatabase;
 import com.example.moviesappbookingusingapi.Domain.FilmItem;
-import com.example.moviesappbookingusingapi.R;
 import com.example.moviesappbookingusingapi.databinding.ActivityConfirmBookingBinding;
 import com.example.moviesappbookingusingapi.model.Show;
 import com.example.moviesappbookingusingapi.model.Ticket;
@@ -36,17 +31,13 @@ public class ConfirmBookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityConfirmBookingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         filmItem = (FilmItem) getIntent().getSerializableExtra("Ticket");
         filmId = getIntent().getIntExtra("FilmId", 0);
         seats = getIntent().getStringArrayListExtra("seatIdList");
         totalPrice = getIntent().getStringExtra("TotalPrice");
-
         db = new BookingDatabase(this);
         countTicket = seats.size();
-
         setData();
-
     }
 
     private void setData(){

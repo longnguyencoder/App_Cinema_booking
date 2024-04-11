@@ -25,7 +25,6 @@ public class Seat extends AppCompatButton {
 
     private static final String TAG = "Seat";
 
-
     public Seat(Context context) {
         super(context);
     }

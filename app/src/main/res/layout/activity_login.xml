@@ -63,8 +63,7 @@
                 android:background="@drawable/intro_btn_background"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="text"
-
+                android:inputType="textPassword"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />

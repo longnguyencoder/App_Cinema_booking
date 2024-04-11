@@ -163,10 +163,7 @@ public class BookingActivity extends AppCompatActivity {
     }
 
 
-   /* private void createTable() {
-        TableLayout tableLayout = (TableLayout) findViewById(R.id.TableSeats);
-        room = new Room(this,tableLayout, binding.price, ROW, COL, bookingDatabase.getSeats(filmId));
-    }*/
+
 
     private void removeTable() {
         TableLayout tableLayout = binding.TableSeats;

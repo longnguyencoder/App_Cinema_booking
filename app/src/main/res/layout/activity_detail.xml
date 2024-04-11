@@ -187,7 +187,7 @@
                 android:id="@+id/MoviesummeryInfor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="15dp"
                 android:text="Text"
                 android:textColor="@color/white"
                 android:textSize="14sp"

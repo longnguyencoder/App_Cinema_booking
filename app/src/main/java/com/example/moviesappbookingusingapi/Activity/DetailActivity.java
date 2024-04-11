@@ -32,14 +32,11 @@ import com.example.moviesappbookingusingapi.R;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class DetailActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private StringRequest stringRequest;
     private ProgressBar progressBar;
-    private TextView titletxt,movieNametxt,MovieRateTxt,MovieTime,movieDate,Summery,MoviesummeryInfor,MovieActorInfor;
+    private TextView titletxt,MovieRateTxt,MovieTime,movieDate,Summery,MoviesummeryInfor,MovieActorInfor;
     private NestedScrollView scrollView;
     private int idFilm;
     private ShapeableImageView pic1;
@@ -60,6 +57,7 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         idFilm = getIntent().getIntExtra("id",0);
+
         initView();
 
         sendRequest();
@@ -129,7 +127,7 @@ public class DetailActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
-        // sử lý sự kiện click vào bt back
+
         backImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
