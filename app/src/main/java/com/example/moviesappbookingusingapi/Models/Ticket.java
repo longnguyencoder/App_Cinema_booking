@@ -1,4 +1,4 @@
-package com.example.moviesappbookingusingapi.model;
+package com.example.moviesappbookingusingapi.Models;
 
 public class Ticket {
     private int ticketID;
@@ -7,7 +7,16 @@ public class Ticket {
     private String filmTitle;
     private String email;
 
-    public Ticket(String seatInfo, String time, String filmTitle, String email) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Ticket( String seatInfo, String time, String filmTitle, String email) {
+
         this.seatInfo = seatInfo;
         this.time = time;
         this.filmTitle = filmTitle;

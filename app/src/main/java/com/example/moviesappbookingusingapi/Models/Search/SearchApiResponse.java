@@ -1,4 +1,4 @@
-package com.example.moviesappbookingusingapi.model.Search;
+package com.example.moviesappbookingusingapi.Models.Search;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.moviesappbookingusingapi.model;
+package com.example.moviesappbookingusingapi.Models;
 
 
 import android.content.Context;

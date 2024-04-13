@@ -2,7 +2,6 @@ package com.example.moviesappbookingusingapi.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -10,8 +9,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moviesappbookingusingapi.Database.BookingDatabase;
+import com.example.moviesappbookingusingapi.Models.User;
 import com.example.moviesappbookingusingapi.databinding.ActivityLoginBinding;
-import com.example.moviesappbookingusingapi.model.User;
 
 import java.util.ArrayList;
 
@@ -49,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                             email = users.get(0).getEmail();
 
                             Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("email", email);
                             startActivity(intent);
 

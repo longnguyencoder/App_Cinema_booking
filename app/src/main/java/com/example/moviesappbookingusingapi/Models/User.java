@@ -1,4 +1,4 @@
-package com.example.moviesappbookingusingapi.model;
+package com.example.moviesappbookingusingapi.Models;
 
 public class User {
     int user_id;

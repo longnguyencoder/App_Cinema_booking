@@ -7,10 +7,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
-import com.example.moviesappbookingusingapi.model.Show;
-import com.example.moviesappbookingusingapi.model.User;
+import com.example.moviesappbookingusingapi.Models.Show;
+import com.example.moviesappbookingusingapi.Models.Ticket;
+import com.example.moviesappbookingusingapi.Models.User;
 
 import java.util.ArrayList;
 
@@ -179,4 +178,48 @@ public class BookingDatabase extends SQLiteOpenHelper {
             return false;
         return true;
     }
+    // Lấy danh sách tất cả các vé từ cơ sở dữ liệu
+//    public ArrayList<Ticket> getAllTickets() {
+//
+//        ArrayList<Ticket> ticketList = new ArrayList<>();
+//        // Thực hiện truy vấn để lấy tất cả các dòng trong bảng ticket
+//        Cursor cursor = db.rawQuery(" SELECT * FROM "+TABLE_TICKET, null);
+//        cursor.moveToFirst();
+//        // Kiểm tra xem có dữ liệu nào không
+//        while (!cursor.isAfterLast()){
+//                // Đọc dữ liệu từ mỗi dòng và tạo đối tượng Ticket tương ứng
+//                @SuppressLint("Range") String seatInfo = cursor.getString(cursor.getColumnIndex("seat_info"));
+//                @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("time"));
+//                @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex("title"));
+//                @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex("email"));
+//
+//                // Tạo đối tượng Ticket từ dữ liệu và thêm vào danh sách
+//                Ticket ticket = new Ticket(seatInfo, time, title, email);
+//                ticketList.add(ticket);
+//                cursor.moveToNext();
+//        }
+//        return ticketList;
+//    }
+    public ArrayList<Ticket> getAllTickets() {
+        ArrayList<Ticket> ticketList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_TICKET, null);
+
+        if (cursor != null && cursor.moveToFirst()) { // Kiểm tra xem con trỏ không rỗng và có hàng nào đó
+            do {
+                // Đảm bảo tên cột phù hợp với cấu trúc cơ sở dữ liệu của bạn
+                @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex("email"));
+
+                @SuppressLint("Range") String seatInfo = cursor.getString(cursor.getColumnIndex("seat_info"));
+                @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("time"));
+                @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex("title"));
+
+                // Tạo đối tượng Ticket và thêm vào danh sách
+                Ticket ticket = new Ticket(seatInfo, time, title, email);
+                ticketList.add(ticket);
+            } while (cursor.moveToNext()); // Di chuyển đến hàng tiếp theo
+            cursor.close(); // Đóng con trỏ khi hoàn tất
+        }
+        return ticketList;
+    }
+
 }

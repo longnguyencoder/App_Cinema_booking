@@ -196,35 +196,6 @@
                 app:layout_constraintStart_toStartOf="@+id/Summery"
                 app:layout_constraintTop_toBottomOf="@+id/Summery" />
 
-            <TextView
-                android:id="@+id/Actors"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:drawableStart="@drawable/microphone"
-                android:drawablePadding="5dp"
-                android:drawableTint="@color/white"
-                android:gravity="center_vertical"
-                android:text="Actors"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/MoviesummeryInfor"
-                app:layout_constraintStart_toStartOf="@+id/MoviesummeryInfor"
-                app:layout_constraintTop_toBottomOf="@+id/MoviesummeryInfor" />
-
-            <TextView
-                android:id="@+id/MovieActorInfor"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-
-                android:text="test"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/Actors"
-                app:layout_constraintStart_toStartOf="@+id/Actors"
-                app:layout_constraintTop_toBottomOf="@+id/Actors" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/imageRecyclerViewdetail"
                 android:layout_width="match_parent"

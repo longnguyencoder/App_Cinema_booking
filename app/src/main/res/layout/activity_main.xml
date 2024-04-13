@@ -1,248 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_backroun"
-    tools:context=".Activity.MainActivity"
-    android:orientation="vertical">
+    android:background="@color/black">
 
-    <ScrollView
-        android:id="@+id/scrollView"
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/gradient_color_backroud"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/textView3"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginTop="24dp"
-                android:textSize="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="What would you like to watch?" />
-
-            <EditText
-                android:id="@+id/editTextText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:ems="10"
-                android:layout_margin="16dp"
-                android:hint="Search Moviess.."
-                android:drawableStart="@drawable/search"
-                android:drawableEnd="@drawable/microphone"
-                android:inputType="text"
-                android:background="@drawable/search_background"
-                 />
-
-            <TextView
-                android:id="@+id/NewsMovie"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="News Movies"
-                android:layout_marginTop="24dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="16dp"
-                android:textStyle="bold"
-                android:textSize="24sp"
-                android:textColor="#FF9800"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/View1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clipToPadding="false"
-                    android:minHeight="200dp"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ProgressBar
-                    android:id="@+id/loading"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/View1"
-                    tools:ignore="MissingConstraints"
-                    tools:visibility="visible" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/upcommingMovies"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Upcomming Movies"
-                android:textColor="#FF9800"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginTop="6dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="6dp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="-24dp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="384dp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="21dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/View2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clipToPadding="false"
-                    android:minHeight="200dp"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <ProgressBar
-                    android:id="@+id/loading1"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/View2"
-                    tools:ignore="MissingConstraints"
-                    tools:visibility="visible" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/menu_bottom"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="@color/main_backroun"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-<!--        android:background=""-->
-        
-    <!--<androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_height="0dp">
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/black"
+        app:menu="@menu/menu_bottom"/>
+<!--        app:itemIconTint="@drawable/bottom_icon_nav_color_selector"-->
+<!--        app:itemTextColor="@drawable/bottom_icon_nav_color_selector"/>-->
 
-        &lt;!&ndash;<com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:backgroundTint="#282f32">
-
-            &lt;!&ndash;<LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="0.2"
-                    app:srcCompat="@drawable/btn_1"
-                    app:tint="@color/white"
-                    tools:ignore="UseAppTint"
-                    tools:layout_editor_absoluteX="21dp"
-                    tools:layout_editor_absoluteY="220dp" />
-
-                <ImageView
-                    android:id="@+id/imageView12"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="0.2"
-                    app:srcCompat="@drawable/btn_2"
-                    app:tint="@color/white"
-                    tools:ignore="UseAppTint"
-                    tools:layout_editor_absoluteX="102dp"
-                    tools:layout_editor_absoluteY="220dp" />
-
-                <ImageView
-                    android:id="@+id/imageView15"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:visibility="invisible"
-                    app:srcCompat="@drawable/btn_3"
-                    app:tint="@color/white"
-                    tools:ignore="UseAppTint"
-                    tools:layout_editor_absoluteX="178dp"
-                    tools:layout_editor_absoluteY="215dp" />
-
-                <ImageView
-                    android:id="@+id/imageView13"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="0.2"
-                    app:srcCompat="@drawable/btn_3"
-                    app:tint="@color/white"
-                    tools:ignore="UseAppTint"
-                    tools:layout_editor_absoluteX="254dp"
-                    tools:layout_editor_absoluteY="220dp" />
-
-                <ImageView
-                    android:id="@+id/imageView14"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="0.2"
-                    app:srcCompat="@drawable/btn_4"
-                    app:tint="@color/white"
-                    tools:ignore="UseAppTint"
-                    tools:layout_editor_absoluteX="335dp"
-                    tools:layout_editor_absoluteY="220dp" />
-            </LinearLayout>&ndash;&gt;
-
-
-        </com.google.android.material.bottomappbar.BottomAppBar>&ndash;&gt;
-
-
-&lt;!&ndash;<com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>&ndash;&gt;
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

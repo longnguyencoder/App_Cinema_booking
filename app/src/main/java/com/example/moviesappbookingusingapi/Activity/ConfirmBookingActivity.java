@@ -11,12 +11,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.moviesappbookingusingapi.Database.BookingDatabase;
-import com.example.moviesappbookingusingapi.Domain.FilmItem;
+import com.example.moviesappbookingusingapi.Models.Movie;
+import com.example.moviesappbookingusingapi.Models.Show;
+import com.example.moviesappbookingusingapi.Models.Ticket;
+import com.example.moviesappbookingusingapi.Util.Credentials;
 import com.example.moviesappbookingusingapi.databinding.ActivityConfirmBookingBinding;
-import com.example.moviesappbookingusingapi.model.Show;
-import com.example.moviesappbookingusingapi.model.Ticket;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
 
 public class ConfirmBookingActivity extends AppCompatActivity {
     ActivityConfirmBookingBinding binding;
@@ -25,7 +28,8 @@ public class ConfirmBookingActivity extends AppCompatActivity {
     int filmId;
     int countTicket;
     BookingDatabase db;
-    FilmItem filmItem;
+    Call<Movie> mMovieComfirmCall;
+    Movie movie;
     String allIds = "";
     String email;
     @Override
@@ -33,7 +37,7 @@ public class ConfirmBookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityConfirmBookingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        filmItem = (FilmItem) getIntent().getSerializableExtra("Ticket");
+        movie = (Movie) getIntent().getSerializableExtra("Ticket");
         filmId = getIntent().getIntExtra("FilmId", 0);
         seats = getIntent().getStringArrayListExtra("seatIdList");
         totalPrice = getIntent().getStringExtra("TotalPrice");
@@ -45,13 +49,14 @@ public class ConfirmBookingActivity extends AppCompatActivity {
     }
 
     private void setData(){
+
         Glide.with(getApplicationContext())
-                .load(filmItem.getPoster())
+                .load(Credentials.IMAGE_LOADING_BASE_URL_1280 + movie.getPoster_path())
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(binding.imvConfirm);
 
-        binding.titleConfirmation.setText(filmItem.getTitle());
+        binding.titleConfirmation.setText(movie.getTitle());
 
         Show show = db.getTime(filmId);
         binding.dateConfirmation.setText("Time: " + show.getTime());
@@ -72,7 +77,7 @@ public class ConfirmBookingActivity extends AppCompatActivity {
         binding.totalTicketConfirm.setText(countTicket + "");
         binding.totalPriceConfirm.setText(totalPrice);
 
-        Ticket ticket = new Ticket(allIds, show.getTime(), filmItem.getTitle(), email);
+        Ticket ticket = new Ticket(allIds, show.getTime(), movie.getTitle(), email);
 
         binding.btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +97,7 @@ public class ConfirmBookingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent iBackBook = new Intent(ConfirmBookingActivity.this, BookingActivity.class);
-                iBackBook.putExtra("FilmIntent", filmItem);
+                iBackBook.putExtra("FilmIntent", movie);
                 startActivity(iBackBook);
             }
         });

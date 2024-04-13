@@ -13,12 +13,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moviesappbookingusingapi.Database.BookingDatabase;
-import com.example.moviesappbookingusingapi.Domain.FilmItem;
+
+import com.example.moviesappbookingusingapi.Models.Movie;
 import com.example.moviesappbookingusingapi.R;
 import com.example.moviesappbookingusingapi.databinding.ActivityBookingBinding;
-import com.example.moviesappbookingusingapi.model.Room;
-import com.example.moviesappbookingusingapi.model.Seat;
-import com.example.moviesappbookingusingapi.model.Show;
+import com.example.moviesappbookingusingapi.Models.Room;
+import com.example.moviesappbookingusingapi.Models.Seat;
+import com.example.moviesappbookingusingapi.Models.Show;
 
 import java.util.ArrayList;
 
@@ -31,9 +32,8 @@ public class BookingActivity extends AppCompatActivity {
     private ArrayList<Show> shows;
     private BookingDatabase bookingDatabase;
     private Room room;
-    private static final String TAG = "SeatSelectionActivity";
     Intent intent;
-    FilmItem filmItem;
+    Movie movie;
     String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +43,12 @@ public class BookingActivity extends AppCompatActivity {
 
         shows = new ArrayList<>();
         intent = getIntent();
-        filmItem = (FilmItem) intent.getSerializableExtra("FilmIntent");
-        binding.titleFilm.setText(filmItem.getTitle());
+        movie = (Movie) intent.getSerializableExtra("movie");
+
+        binding.titleFilm.setText(movie.getTitle());
         email = intent.getStringExtra("email");
 
-        Log.d("email_booking", email);
+        Log.d("movie", movie.getTitle() + "");
 
         insertData();
         addEvents();
@@ -56,14 +57,14 @@ public class BookingActivity extends AppCompatActivity {
     private void insertData(){
         bookingDatabase = new BookingDatabase(this);
 
-        bookingDatabase.insertDatatoShow(filmItem.getTitle(), "8:45");
-        bookingDatabase.insertDatatoShow(filmItem.getTitle(), "10:30");
-        bookingDatabase.insertDatatoShow(filmItem.getTitle(), "13:25");
-        bookingDatabase.insertDatatoShow(filmItem.getTitle(), "15:00");
-        bookingDatabase.insertDatatoShow(filmItem.getTitle(), "18:20");
-        bookingDatabase.insertDatatoShow(filmItem.getTitle(), "20:45");
+        bookingDatabase.insertDatatoShow(movie.getTitle(), "8:45");
+        bookingDatabase.insertDatatoShow(movie.getTitle(), "10:30");
+        bookingDatabase.insertDatatoShow(movie.getTitle(), "13:25");
+        bookingDatabase.insertDatatoShow(movie.getTitle(), "15:00");
+        bookingDatabase.insertDatatoShow(movie.getTitle(), "18:20");
+        bookingDatabase.insertDatatoShow(movie.getTitle(), "20:45");
 
-        shows = bookingDatabase.getShows(filmItem.getTitle());
+        shows = bookingDatabase.getShows(movie.getTitle());
 
         String rd_1 = shows.get(0).getTime();
         binding.rdTime1.setText(rd_1);
@@ -196,7 +197,7 @@ public class BookingActivity extends AppCompatActivity {
             Toast.makeText(BookingActivity.this, "No seat selected", Toast.LENGTH_SHORT).show();
         else {
             Intent iConfirm = new Intent(BookingActivity.this, ConfirmBookingActivity.class);
-            iConfirm.putExtra("Ticket", filmItem);
+            iConfirm.putExtra("Ticket", movie);
             iConfirm.putStringArrayListExtra("seatIdList", seatIds);
             iConfirm.putExtra("TotalPrice", Double.toString(room.calculate(seats)));
             iConfirm.putExtra("FilmId", filmId);

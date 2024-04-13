@@ -1,4 +1,4 @@
-package com.example.moviesappbookingusingapi.model.Search;
+package com.example.moviesappbookingusingapi.Models.Search;
 
 public class SearchArrayObject {
     String title = "";
