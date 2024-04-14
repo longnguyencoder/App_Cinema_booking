@@ -15,7 +15,18 @@ public class Ticket {
         this.email = email;
     }
 
-    public Ticket( String seatInfo, String time, String filmTitle, String email) {
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "ticketID=" + ticketID +
+                ", seatInfo='" + seatInfo + '\'' +
+                ", time='" + time + '\'' +
+                ", filmTitle='" + filmTitle + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    public Ticket(String seatInfo, String time, String filmTitle, String email) {
 
         this.seatInfo = seatInfo;
         this.time = time;

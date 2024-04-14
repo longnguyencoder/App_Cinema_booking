@@ -1,11 +1,14 @@
 package com.example.moviesappbookingusingapi.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,21 +18,19 @@ import com.example.moviesappbookingusingapi.Adapter.TicketAdapter;
 import com.example.moviesappbookingusingapi.Database.BookingDatabase;
 import com.example.moviesappbookingusingapi.Models.Ticket;
 import com.example.moviesappbookingusingapi.R;
-import com.example.moviesappbookingusingapi.databinding.ProfileFragmentBinding;
 
 import java.util.ArrayList;
 
 public class ProfileFragment extends Fragment {
-    ProfileFragmentBinding binding;
-    private ArrayList<Ticket> ticketList;
-    private TicketAdapter ticketAdapter;
-    private BookingDatabase db;
-    ListView lvHistory;
+    private BookingDatabase bookingDatabase;
+    private ListView listViewTickets;
+    private Button btnShowHistory;
+    private TextView tvnameEmail;
 
 
 
 
-    @Nullable
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.profile_fragment, container, false);
@@ -39,34 +40,51 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ticketAdapter = new TicketAdapter(getContext(),ticketList);
-        lvHistory = view.findViewById(R.id.lvHistory);
-        ticketList= new ArrayList<>();
-        db =new BookingDatabase(getContext());
-        ticketList = new ArrayList<>();
-        ticketAdapter = new TicketAdapter(getContext(), ticketList);
-        lvHistory.setAdapter(ticketAdapter);
-        addEvents();
 
+        // Initialize views
+        listViewTickets = view.findViewById(R.id.lvHistory);
+        btnShowHistory = view.findViewById(R.id.btn_history);
+        tvnameEmail = view.findViewById(R.id.nameEmail);
 
-    }
+        // Retrieve the current user's email from SharedPreferences
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+        String currentUserEmail = sharedPreferences.getString("user_email", "");
 
-    private void addEvents() {
-        binding.btnHistory.setOnClickListener(new View.OnClickListener() {
+        // Set the user's email as the name (temporary implementation)
+        tvnameEmail.setText(  currentUserEmail);
+        // Initialize database
+        bookingDatabase = new BookingDatabase(getActivity());
+
+        // Set onClickListener for the button
+        btnShowHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Ticket ticket = new Ticket("Seat Info", "Time", "Film Title", "Email");
-                ticket.setSeatInfo("Seat Info");
-                ticket.setTime("Time");
-                ticket.setFilmTitle("Film Title");
-                ticket.setEmail("Email");
+                // Retrieve the current user's email from SharedPreferences
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
+                String currentUserEmail = sharedPreferences.getString("user_email", "");
 
-                ticketList.add(ticket);
-                ticketAdapter.notifyDataSetChanged();
+                // Show the list of tickets for the current user
+                showTickets(currentUserEmail);
+            }
+
+            private void showTickets(String currentUserEmail) {
+                // Retrieve tickets for the current user
+                ArrayList<Ticket> userTickets = bookingDatabase.getProfileTickets(currentUserEmail);
+
+                // Populate ListView with user's tickets using TicketAdapter
+                TicketAdapter adapter = new TicketAdapter(getActivity(), userTickets);
+                listViewTickets.setAdapter(adapter);
             }
         });
 
     }
+
+
+
+
+
+
+
 
     @Override
     public void onResume() {

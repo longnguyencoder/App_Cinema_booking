@@ -1,11 +1,14 @@
 package com.example.moviesappbookingusingapi.Database;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.moviesappbookingusingapi.Models.Show;
 import com.example.moviesappbookingusingapi.Models.Ticket;
@@ -203,6 +206,58 @@ public class BookingDatabase extends SQLiteOpenHelper {
     public ArrayList<Ticket> getAllTickets() {
         ArrayList<Ticket> ticketList = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_TICKET, null);
+
+        if (cursor != null && cursor.moveToFirst()) { // Kiểm tra xem con trỏ không rỗng và có hàng nào đó
+            do {
+                // Đảm bảo tên cột phù hợp với cấu trúc cơ sở dữ liệu của bạn
+                @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex("email"));
+
+                @SuppressLint("Range") String seatInfo = cursor.getString(cursor.getColumnIndex("seat_info"));
+                @SuppressLint("Range") String time = cursor.getString(cursor.getColumnIndex("time"));
+                @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex("title"));
+
+                // Tạo đối tượng Ticket và thêm vào danh sách
+                Ticket ticket = new Ticket(seatInfo, time, title, email);
+                ticketList.add(ticket);
+            } while (cursor.moveToNext()); // Di chuyển đến hàng tiếp theo
+            cursor.close(); // Đóng con trỏ khi hoàn tất
+        }
+        return ticketList;
+    }
+
+
+
+
+    @SuppressLint("Range")
+    public String getUserName(String email) {
+        String userName = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        try {
+            // Query to fetch user name based on email
+            String query = "SELECT email FROM " + TABLE_USER + " WHERE email = ?";
+            cursor = db.rawQuery(query, new String[]{email});
+
+            // Check if cursor has data
+            if (cursor != null && cursor.moveToFirst()) {
+                userName = cursor.getString(cursor.getColumnIndex("email"));
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error fetching user name: " + e.getMessage());
+        } finally {
+            // Close cursor and database connection
+            if (cursor != null) {
+                cursor.close();
+            }
+            db.close();
+        }
+
+        return userName;
+    }
+    public ArrayList<Ticket> getProfileTickets(String userEmail) {
+        ArrayList<Ticket> ticketList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_TICKET + " WHERE email = ? ", new String[]{userEmail});
 
         if (cursor != null && cursor.moveToFirst()) { // Kiểm tra xem con trỏ không rỗng và có hàng nào đó
             do {
